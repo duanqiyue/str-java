@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:mysql://94.191.33.211:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    # 如果在pom 文件中没有依赖数据库连接这个会报红，加入 ‘mysql-connector-java’ 即可，如果还是报红的话，给出 <version>8.0.13</version> 具体版本号即可，如果还是不行，可能是其他引入的spring相关 jar 包的 pom 坐标依赖有冲突，删除即可。但是在启动后后台打印日志会报红
+    #《Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is #`com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual #loading of the driver class is generally unnecessary.》
+    # 把驱动名称：com.mysql.jdbc.Driver 换成 com.mysql.cj.jdbc.Driver 即可
+    driver-class-name: com.mysql.jdbc.Driver
+
+
