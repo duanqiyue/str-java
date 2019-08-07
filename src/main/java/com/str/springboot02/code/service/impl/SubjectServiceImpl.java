@@ -12,8 +12,12 @@ public class SubjectServiceImpl implements SubjectService {
     private SubjectDao subjectDao;
 
     @Override
-    public Subject getOneSubject(String subject) {
-        Subject subject1 = subjectDao.getOneSubject(subject);
-        return subject1;
+    public Subject getOneSubject(Subject SubjectVo) {
+        return subjectDao.getOneSubject(SubjectVo);
+    }
+
+    @Override
+    public Integer getMaxId() {
+        return subjectDao.getMaxId();
     }
 }

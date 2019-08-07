@@ -3,6 +3,7 @@ package com.str.springboot02.code.controller;
 import com.str.springboot02.code.entity.Subject;
 import com.str.springboot02.code.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,7 +13,10 @@ public class SubjectController {
     private SubjectService subjectService;
 
     @RequestMapping("/getOneSubject")
-    private Subject getOneSubject(String subject){
-        return subjectService.getOneSubject(subject);
+    private Subject getOneSubject(Subject subjectVo){
+        if(StringUtils.isEmpty(subjectVo.getId()) || subjectService.getMaxId().equals(subjectVo.getId())){
+            subjectVo.setId(0);
+        }
+        return subjectService.getOneSubject(subjectVo);
     }
 }
